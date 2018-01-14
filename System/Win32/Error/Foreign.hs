@@ -69,6 +69,7 @@ module System.Win32.Error.Foreign
   , failIfNull
   , failUnlessSuccess
   , failWith
+  , failWith'
   , errorWin
   ) where
 
