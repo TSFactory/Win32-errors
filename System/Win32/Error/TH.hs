@@ -23,7 +23,7 @@ errOther = mkName "Other"
 --         | Other !DWORD
 --         deriving (Eq, Show)
 genErrCode :: Q [Dec]
-genErrCode = return [DataD [] errCode [] Nothing cons [ConT ''Eq, ConT ''Show]]
+genErrCode = return [DataD [] errCode [] Nothing cons [DerivClause Nothing [ConT ''Eq, ConT ''Show]]]
   where
     con name = NormalC name []
     cons = map (con . snd) mapping ++ [NormalC errOther [(Bang NoSourceUnpackedness SourceStrict, ConT ''DWORD)]]
